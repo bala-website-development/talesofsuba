@@ -480,14 +480,16 @@ const App = () => {
                     </button>{" "}
                     {/* Settle Up Button */}
                     {friend.balance == 0 && deleteEnabled ? (
-                      <img
-                        onClick={() => removeFriend(friend.email)}
-                        src={bin.src}
-                        width="40"
-                        className="px-2 border rounded p-1"
-                        //className={!deleteEnabled || loading ? "d-none" : ""} // Disable if deleteEnabled is false
-                        style={{ cursor: deleteEnabled ? "pointer" : "not-allowed" }} // Change cursor based on state
-                      />
+                      <>
+                        <img
+                          onClick={() => removeFriend(friend.email)}
+                          src={bin.src}
+                          width="40"
+                          className="px-2 border rounded p-1"
+                          //className={!deleteEnabled || loading ? "d-none" : ""} // Disable if deleteEnabled is false
+                          style={{ cursor: deleteEnabled ? "pointer" : "not-allowed" }} // Change cursor based on state
+                        />
+                      </>
                     ) : friend.balance == 0 ? (
                       ""
                     ) : (

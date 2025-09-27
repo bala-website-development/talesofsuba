@@ -159,6 +159,11 @@ const navItems = [
   },
   {
     id: 8,
+    name: "Shop",
+    href: "/products",
+  },
+  {
+    id: 9,
     name: "Contact Us",
     href: "/contact",
   },

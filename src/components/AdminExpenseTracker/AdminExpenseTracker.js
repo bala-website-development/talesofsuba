@@ -18,7 +18,7 @@ const ExpenseTracker = () => {
 
   ///pagination
   const [currentPage, setCurrentPage] = useState(1); // Current page state
-  const expensesPerPage = 15; // Number of expenses to display per page
+  const expensesPerPage = 12; // Number of expenses to display per page
   const pageNumbersToShow = 4;
   const indexOfLastExpense = currentPage * expensesPerPage;
   const indexOfFirstExpense = indexOfLastExpense - expensesPerPage;
