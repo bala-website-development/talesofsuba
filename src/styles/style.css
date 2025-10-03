@@ -93,7 +93,13 @@
   --thm-black: #222429;
   --thm-text: #686a6f;
 }
-
+#productimage
+{
+  height: 200px;
+  width: auto;
+ 
+  border-radius: 5px;
+}
 .container {
   padding-left: 15px;
   padding-right: 15px;
