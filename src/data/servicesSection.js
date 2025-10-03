@@ -40,6 +40,12 @@ export default servicesSection;
 
 export const serviceSectionThree = [
   {
+    id: 3,
+    icon: "flaticon-computer",
+    href: "/products",
+    title: "Shop Our\nHand Picked Products",
+  },
+  {
     id: 4,
     icon: "flaticon-development",
     href: "/bookreviews",

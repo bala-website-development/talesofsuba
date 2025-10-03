@@ -9,9 +9,10 @@ const SingleNews = ({ news = {} }) => {
     <Col lg={4} md={6} sm={12} className="news-block animated fadeInUp">
       <div className="inner-box">
         <div className="image-box1">
-          <Link href={"/productdetails/" + slug}>
-            <a>
-              <Image src={thumbnail} alt="talesofsuba" />
+          {/* <Link href={"/productdetails/" + slug}> */}
+          <Link href={link} target="_blank">
+            <a href={link} target="_blank">
+              <Image id="productimage" src={thumbnail} alt="talesofsuba" />
             </a>
           </Link>
         </div>

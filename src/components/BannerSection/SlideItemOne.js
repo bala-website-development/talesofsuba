@@ -3,7 +3,7 @@ import React, { forwardRef } from "react";
 import TextSplit from "../Reuseable/TextSplit";
 
 const SlideItemOne = ({ slide = {} }, ref) => {
-  const { bg, subtitle, title } = slide;
+  const { bg, subtitle, title, page } = slide;
 
   return (
     <div ref={ref} style={{ userSelect: "none" }} className="slide-item">
@@ -25,7 +25,7 @@ const SlideItemOne = ({ slide = {} }, ref) => {
                 <TextSplit text={title} />
               </h1>
               <div className="link-box">
-                <Link href="/bookreviews">
+                <Link href={page}>
                   <a className="theme-btn btn-style-one">
                     <i className="btn-curve"></i>
                     <span className="btn-title">Discover More</span>
