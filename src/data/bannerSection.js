@@ -6,18 +6,21 @@ export const bannerTwo = [
     bg: "https://ssndigitalmedia.s3.ap-south-1.amazonaws.com/talesofsuba/websiteimages/slide1.jpg",
     subtitle: "welcome to Tales of Suba",
     title: "Read Review\nRecommend",
+    page: "/bookreviews",
   },
   {
     id: 2,
     bg: "https://ssndigitalmedia.s3.ap-south-1.amazonaws.com/talesofsuba/websiteimages/slide2.jpg",
     subtitle: "welcome to Tales of Suba",
     title: "Travel Review\nPhotography",
+    page: "/blogs",
   },
   {
     id: 3,
     bg: "https://ssndigitalmedia.s3.ap-south-1.amazonaws.com/talesofsuba/websiteimages/slide3.jpg",
     subtitle: "welcome to Tales of Suba",
-    title: "Food Review\nRecommend",
+    title: "Shop Our\nHand Picked Products",
+    page: "/products",
   },
 ];
 
