@@ -10,14 +10,13 @@ const SingleNews = ({ news = {} }) => {
       <div className="inner-box">
         <div className="image-box1">
           {/* <Link href={"/productdetails/" + slug}> */}
-          <Link href={link} target="_blank">
-            <a href={link} target="_blank">
-              <Image id="productimage" src={thumbnail} alt="talesofsuba" />
-            </a>
-          </Link>
+
+          <a href={link} target="_blank">
+            <Image id="productimage" src={thumbnail} alt="talesofsuba" />
+          </a>
         </div>
         <div className="lower-box">
-          <div className="post-meta">
+          <div className="post-meta ">
             <ul className="clearfix">
               <li>
                 <span className="far fa-clock"></span> {date} <span className="far fa-user-circle"></span>
