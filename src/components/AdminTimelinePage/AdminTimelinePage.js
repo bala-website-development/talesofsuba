@@ -298,7 +298,7 @@ const CheckoutPage = () => {
         id: uuid(),
         type: country,
         slug: slugify(data.title),
-        date: data.date,
+        date: currentDate,
         title: data.title,
         category: cat,
         shortdescription: data.shortdescription,
@@ -526,9 +526,9 @@ const CheckoutPage = () => {
                                   <input type="file" name="file" onChange={handleFileChange} />
                                 </div>
                               </Col>
-                              <Col md={12} className="form-group">
+                              <Col md={6} className="form-group">
                                 <div className="field-inner">
-                                  Select Date: <input type="date" placeholder="Date" defaultValue={currentDate} name="date" {...register("date", { required: true })} id="date" />
+                                  Select Date: <input type="date" placeholder="Date" defaultValue={currentDate} name="date" {...register("date", { required: false })} id="date" />
                                 </div>
                               </Col>
                               <Col md={12} className="form-group" className={blog ? "" : "d-none"}>
