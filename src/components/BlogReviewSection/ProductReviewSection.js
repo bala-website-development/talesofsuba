@@ -8,13 +8,13 @@ import axios from "axios";
 import config from "../../config.json";
 const { title, newsData } = newsSection;
 
-const NewsSection = ({ className = "", showTitle = true, isMore = false }) => {
+const NewsSection = ({ className = "", product, showTitle = true, isMore = false }) => {
   const ref = useActive("#product");
   const [loading, setLoading] = useState(false);
-  const [allpost, setAllPost] = useState([]);
+  const [allpost, setAllPost] = useState(product);
   // call service to get blog data
   const type = "product";
-  const [blog, setBlog] = useState([]);
+  const [blog, setBlog] = useState(product);
   console.log("ssnblog", blog);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,8 +43,8 @@ const NewsSection = ({ className = "", showTitle = true, isMore = false }) => {
     const fetchData = async () => {
       setLoading(true);
       console.log("ssnbloginisdefetch");
-      const response = await axios.get(process.env.NEXT_PUBLIC_SERVICE_URL + "itemsbytype/" + type);
-      const sorteddata = response?.data.sort((b, a) => a.date.localeCompare(b.date));
+      const sorteddata = product?.sort((b, a) => a.date.localeCompare(b.date));
+      console.log("ssnbloginisdefetch sorteddata", sorteddata);
       setBlog(sorteddata);
       setAllPost(sorteddata);
       setLoading(false);
@@ -59,7 +59,7 @@ const NewsSection = ({ className = "", showTitle = true, isMore = false }) => {
   }, []);
 
   return (
-    <section ref={ref} className={`news-section ${className}`} id="product">
+    <section ref={ref} className={`news-section py-4 ${className}`} id="product">
       <div className="auto-container">
         <Row className="clearfix">
           <Col md={4}>
