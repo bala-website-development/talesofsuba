@@ -11,25 +11,25 @@ import React from "react";
 
 export async function getServerSideProps({ params, searchParams }) {
   // Fetch data from external API
-  const id = "";
-  const data = "";
+  const type = "product";
   console.log("ssr params", "params.blogdetails");
-  //const res = await fetch(process.env.NEXT_PUBLIC_SERVICE_URL + "/items/" + id);
-  //const data = await res.json();
+  const response = await fetch(process.env.NEXT_PUBLIC_SERVICE_URL + "/itemsbytype/" + type);
+  console.log("ssr params", response);
+  //const sorteddata = response.sort((b, a) => a.date.localeCompare(b.date));
+  const data = await response.json();
   // Pass data to the page via props
   return { props: { data } };
 }
 
-const BlogGrid = () => {
+const BlogGrid = ({ data }) => {
   return (
     <Layout pageTitle="SuBa Products">
       <Style />
       <HeaderOne />
       <MobileMenu />
       <SearchPopup />
-      <PageBanner title="SuBa Products" />
-      <ProductReviewSection showTitle={false} isMore />
-      {/* <GallerySectionOneBlog /> */}
+      <PageBanner title="SuBa Home Products" />
+      <ProductReviewSection product={data} showTitle={false} isMore />
       <div className="sponsors-section__about-two">
         <br />
         <br />
