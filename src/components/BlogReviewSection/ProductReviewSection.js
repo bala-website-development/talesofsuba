@@ -3,7 +3,7 @@ import newsSection from "@/data/newsSection";
 import useActive from "@/hooks/useActive";
 import Link from "next/link";
 import { Row, Col } from "react-bootstrap";
-import SingleNews from "./Product";
+import Product from "./Product";
 import axios from "axios";
 import config from "../../config.json";
 const { title, newsData } = newsSection;
@@ -110,7 +110,7 @@ const NewsSection = ({ className = "", showTitle = true, isMore = false }) => {
           <>
             <Row className="clearfix">
               {blog?.map((news) => (
-                <SingleNews key={news.id} news={news} />
+                <Product key={news.id} news={news} />
               ))}
             </Row>
             {isMore && (
