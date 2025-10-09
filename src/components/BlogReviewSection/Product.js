@@ -17,7 +17,7 @@ const SingleNews = ({ news = {} }) => {
         </div>
         <div className="lower-box">
           <div className="post-meta ">
-            <ul className="clearfix">
+            <ul className="clearfix ">
               <li>
                 <span className="far fa-clock"></span> {date} <span className="far fa-user-circle"></span>
                 {author === "" || author === undefined ? "tales of suba" : author}
@@ -33,14 +33,14 @@ const SingleNews = ({ news = {} }) => {
               {" "}
               <h5>
                 <a title={title} href={link} target="_blank">
-                  {title}
+                  {title.substring(0, 20)}
                 </a>
               </h5>
             </span>
           </div>
 
-          <div className="text1">
-            <div>{description.substring(0, 100).replace(/(<([^>]+)>)/gi, "")}...</div>
+          <div className="text">
+            <p>{description.substring(0, 50).replace(/(<([^>]+)>)/gi, "")}...</p>
           </div>
           <div>
             {link?.includes("/a>") ? (
@@ -48,7 +48,7 @@ const SingleNews = ({ news = {} }) => {
             ) : link === "" || link === undefined ? (
               ""
             ) : (
-              <a href={link} target="_blank">
+              <a href={link} className="theme-btn btn-style-one px-3" target="_blank">
                 Check at Amazon
               </a>
             )}
