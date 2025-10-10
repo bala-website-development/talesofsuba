@@ -8,7 +8,7 @@ import axios from "axios";
 import config from "../../config.json";
 const { title, newsData } = newsSection;
 
-const NewsSection = ({ className = "", product, showTitle = true, isMore = false }) => {
+const NewsSection = ({ className = "", product, search, showTitle = true, isMore = false }) => {
   const ref = useActive("#product");
   const [loading, setLoading] = useState(false);
   const [allpost, setAllPost] = useState(product);
@@ -26,6 +26,8 @@ const NewsSection = ({ className = "", product, showTitle = true, isMore = false
 
   const applyFilter = (blog, searchValue) => {
     console.log("searchvalue", searchValue);
+    console.log("searchdata", search);
+    //searchValue = searchValue !== "" ? searchValue : search;
     if (searchValue !== "") {
       const filteredData = blog.filter((data) => {
         console.log("searchdata", data);
@@ -48,6 +50,7 @@ const NewsSection = ({ className = "", product, showTitle = true, isMore = false
       setBlog(sorteddata);
       setAllPost(sorteddata);
       setLoading(false);
+      applyFilter(blog, search);
     };
     try {
       fetchData();
@@ -83,7 +86,7 @@ const NewsSection = ({ className = "", product, showTitle = true, isMore = false
                 <div className="widget-inner">
                   <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                      <input type="search" name="search" onChange={(e) => applyFilter(blog, e.target.value)} placeholder="Search" required />
+                      <input type="search" name="search" onChange={(e) => applyFilter(allpost, e.target.value || search)} placeholder="Search" required />
                       <button type="submit">
                         <span className="icon flaticon-magnifying-glass-1"></span>
                       </button>
@@ -109,9 +112,16 @@ const NewsSection = ({ className = "", product, showTitle = true, isMore = false
         ) : (
           <>
             <Row className="clearfix">
-              {blog?.map((news) => (
-                <Product key={news.id} news={news} />
-              ))}
+              {blog.length !== 0 ? (
+                blog?.map((news) => <Product key={news.id} news={news} />)
+              ) : (
+                <div align="center">
+                  <p>No Product Found</p>
+                  <a href="/products" className="border rounded p-3">
+                    View All Products
+                  </a>
+                </div>
+              )}
             </Row>
             {isMore && (
               <div className="more-box d-none">
