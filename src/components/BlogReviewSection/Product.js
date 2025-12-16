@@ -9,11 +9,11 @@ const SingleNews = ({ news = {} }) => {
     <Col lg={4} md={6} sm={12} className="news-block animated fadeInUp">
       <div className="inner-box">
         <div className="image-box1">
-          {/* <Link href={"/productdetails/" + slug}> */}
-
-          <a href={link} target="_blank">
-            <Image id="productimage" src={thumbnail} alt="talesofsuba" />
-          </a>
+          <Link href={"/productdetails/" + slug}>
+            <a>
+              <Image id="productimage" src={thumbnail} alt="talesofsuba" />
+            </a>
+          </Link>
         </div>
         <div className="lower-box">
           <div className="post-meta ">
@@ -32,17 +32,16 @@ const SingleNews = ({ news = {} }) => {
             <span>
               {" "}
               <h5>
-                <a title={title} href={link} target="_blank">
-                  {title.substring(0, 20)}
-                </a>
+                <Link href={"/productdetails/" + slug}>
+                  <a title={title}>{title.substring(0, 20)}...</a>
+                </Link>
               </h5>
             </span>
           </div>
 
-          <div className="text">
-            <p>{description.substring(0, 50).replace(/(<([^>]+)>)/gi, "")}...</p>
-          </div>
-          <div>
+          {/* Description removed as per request */}
+
+          <div className="mt-3">
             {link?.includes("/a>") ? (
               <div dangerouslySetInnerHTML={{ __html: link }} />
             ) : link === "" || link === undefined ? (

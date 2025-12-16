@@ -139,6 +139,7 @@ const CheckoutPage = () => {
   const [type, setType] = useState("");
   const [view, setView] = useState("");
   const [update, setUpdate] = useState(false);
+  const [isdelete, setDelete] = useState(false);
   const [cat, setCat] = useState("");
   const [author, setAuthor] = useState("talesofsuba");
   const [loading, setLoading] = useState(false);
@@ -343,6 +344,19 @@ const CheckoutPage = () => {
 
     setFile(file);
     setMessage("");
+  };
+  const handleDelete = async (e) => {
+    if (window.confirm("Are you sure you want to delete this item?")) {
+      let datas = {
+        id: selectedPost && selectedPost[0]?.id,
+        name: selectedPost && selectedPost[0]?.name,
+      };
+      alert("deleted", datas.name);
+      await fetch(process.env.NEXT_PUBLIC_SERVICE_URL + "/removeitem/" + datas.id, { method: "DELETE" });
+      console.log("deleted", datas);
+      setUpdate(false);
+      return;
+    }
   };
   const uploadFile = (dataarray, type) => {
     // S3 Bucket Name
@@ -586,13 +600,19 @@ const CheckoutPage = () => {
                     {msg} {progress}
                     <br />
                     {type && (
-                      <button type="submit" className="theme-btn btn-style-one">
+                      <button type="submit" className="w-auto theme-btn btn-style-one">
                         <i className="btn-curve"></i>
                         <span className="btn-title">{!update ? "Create " + type : "Update " + type}</span>
                       </button>
                     )}{" "}
                     {update && (
-                      <button type="button" onClick={(e) => (setUpdate(false), setType(""), setMessage(""))} className="theme-btn btn-style-two border">
+                      <button type="button" onClick={(e) => (setDelete(true), setType(""), setMessage(""), handleDelete())} className="w-auto theme-btn btn-style-two border bg-danger">
+                        <i className="btn-curve"></i>
+                        <span className="btn-title">Delete</span>
+                      </button>
+                    )}{" "}
+                    {update && (
+                      <button type="button" onClick={(e) => (setUpdate(false), setType(""), setMessage(""))} className="w-auto theme-btn btn-style-two border">
                         <i className="btn-curve"></i>
                         <span className="btn-title">Create</span>
                       </button>
@@ -667,6 +687,7 @@ const CheckoutPage = () => {
                 {!loading && (
                   <DataTable value={post} paginator rows={5} selectionMode={rowClick ? null : "radiobutton"} selection={selectedPost} onSelectionChange={(e) => onSelectionChange(e.value)} dataKey="id" stripedRows showGridlines tableStyle={{ minWidth: "50rem" }}>
                     <Column className="p-1" field="title" header={view + " Title"}></Column>
+                    <Column field="thumbnail" header="Image" body={(rowData) => <img src={rowData.thumbnail} alt="thumbnail" style={{ width: "80px", borderRadius: "8px" }} />} />
                     <Column field="createddate" header="Date"></Column>
                     <Column field="isactive" header="Is Active"></Column>
                   </DataTable>

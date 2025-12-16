@@ -1,6 +1,6 @@
 import PageBanner from "@/components/BannerSection/PageBanner";
-import HeaderOne from "@/components/header/HeaderOne";
-import MobileMenu from "@/components/header/MobileMenu";
+import HeaderOne from "@/components/Header/HeaderOne";
+import MobileMenu from "@/components/Header/MobileMenu";
 //import { blogData } from "@/data/blogData";
 import Layout from "@/components/Layout/Layout";
 import MainFooter from "@/components/MainFooter/MainFooter";
@@ -26,7 +26,7 @@ const BlogSingle = ({ data }) => {
   console.log("ssr data", query);
   const [singleblog, setSingleblog] = useState([]);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
   return (
     <>
       {data.map((event) => (

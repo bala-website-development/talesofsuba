@@ -28,7 +28,7 @@ const SidebarSide = () => {
 
     const id = params.get("id");
     console.log("pathname", id);
-    const type = pathname.includes("/bookreviewdetails") ? "bookreview" : "blog";
+    const type = pathname.includes("/bookreviewdetails") ? "bookreview" : pathname.includes("/productdetails") ? "product" : "blog";
     console.log("ssnid", id);
     setURLSlug(id);
     const fetchData = async () => {
@@ -86,6 +86,10 @@ const SidebarSide = () => {
               <li key={post.id} className={urlslug === post.slug ? "active" : ""}>
                 {pathname.includes("/bookreviewdetails") ? (
                   <a title={post.title} href={"/bookreviewdetails/" + post.slug}>
+                    {post.title.substring(0, 30)}
+                  </a>
+                ) : pathname.includes("/productdetails") ? (
+                  <a title={post.title} href={"/productdetails/" + post.slug}>
                     {post.title.substring(0, 30)}
                   </a>
                 ) : (

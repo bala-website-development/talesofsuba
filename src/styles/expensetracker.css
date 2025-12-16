@@ -171,9 +171,10 @@ strong {
 
 /* Styling for buttons */
 button {
-  background-color: #f44336;
+  background-color: #d39804;
   color: white;
-  padding: 5px 10px;
+  padding: 5px 5px;
+  margin: 2px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
